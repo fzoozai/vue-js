@@ -20,7 +20,18 @@
 
         <div id="app">
 
-            <h1>{{ message }}</h1>
+            <form>
+                <span class="error" v-show = "!message">
+                   Upppppps. Please enter a message!
+                </span>
+                <br />
+                <textarea v-model="message"></textarea>
+                <br />
+                <button type="submit">
+                    Send
+                </button>
+            </form>
+
 
         </div>
 
@@ -45,7 +56,7 @@
             new Vue ({
                 el: '#app',
                 data: {
-                    message: 'Hello World'
+                    message: ''
                 }
             });
 
