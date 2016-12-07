@@ -19,7 +19,7 @@
         <!-- Add your site or application content here -->
 
         <div id="app">
-            <form action="done.html" v-on:submit = "handleIt">
+            <form action="done.html" v-on:submit.prevent = "handleIt">
                 <button type="submit">
                     Send
                 </button>
@@ -46,9 +46,8 @@
             new Vue ({
                 el: '#app',
                 methods: {
-                    handleIt: function (e) {
+                    handleIt: function () {
                         alert('Handled');
-                        e.preventDefault();
                     }
                 }
             });
