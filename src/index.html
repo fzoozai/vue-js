@@ -19,20 +19,11 @@
         <!-- Add your site or application content here -->
 
         <div id="app">
-
-            <form>
-                <span class="error" v-show = "!message">
-                   Upppppps. Please enter a message!
-                </span>
-                <br />
-                <textarea v-model="message"></textarea>
-                <br />
-                <button type="submit" v-show="message">
+            <form action="done.html" v-on:submit = "handleIt">
+                <button type="submit">
                     Send
                 </button>
             </form>
-
-
         </div>
 
         <script src="js/plugins.js"></script>
@@ -52,14 +43,15 @@
         </script>
 
         <script>
-
             new Vue ({
                 el: '#app',
-                data: {
-                    message: ''
+                methods: {
+                    handleIt: function (e) {
+                        alert('Handled');
+                        e.preventDefault();
+                    }
                 }
             });
-
         </script>
 
     </body>
