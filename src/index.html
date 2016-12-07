@@ -18,10 +18,18 @@
         <!-- Add your site or application content here -->
 
         <div id="app">
-
             <counter></counter>
-
+            <counter></counter>
+            <counter></counter>
         </div>
+
+
+        <template id="counter-template">
+            <div>
+                <h1>Header</h1>
+                <button>Increment</button>
+            </div>
+        </template>
 
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
@@ -29,11 +37,10 @@
         <!--VueJs-->
         <script src="js/vue.js"></script>
 
-
         <script>
 
             Vue.component('counter', {
-                template: '<h1>Hello W.</h1>'
+                template: '#counter-template'
             });
 
             new Vue ({
