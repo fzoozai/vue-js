@@ -22,11 +22,14 @@
         <!-- Add your site or application content here -->
 
         <div id="app">
-            <h1> Skill: {{skill}} </h1>
-            <input type="checkbox" id="checkbox" v-model="checked" />
-            <input type="text" v-model="points">
-        </div>
 
+            <h1>{{fullname}}</h1>
+
+            <input type="text" v-model="first" placeholder="firstname">
+            <input type="text" v-model="last" placeholder="lastname">
+
+
+        </div>
 
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.5/vue.js"></script>
@@ -39,20 +42,19 @@
             new Vue ({
                 el: '#app',
                 data: {
-                    checked: false,
-                    points: '101'
+                    first: 'fzoozai',
+                    last: 'techio',
+                    fullname: 'fzoozai techio'
                 },
 
-                computed: {
-                    skill: function () {
-                        if(this.points <= 100){
-                            return 'Beginner';
-                        } else {
-                            return 'Intermediate';
-                        }
+                watch: {
+                    first: function (first) {
+                        this.fullname = first + ' ' + this.last;
+                    },
+                    last: function (last) {
+                        this.fullname = this.first + ' ' + last;
                     }
                 }
-
             });
         </script>
 
