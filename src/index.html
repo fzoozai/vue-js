@@ -17,7 +17,7 @@
         <![endif]-->
         <!-- Add your site or application content here -->
 
-        <h1> Skill: {{points <= 100 ? 'Beginner' : 'Intermediate' }} </h1>
+        <h1> Skill: {{skill}} </h1>
 
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
@@ -28,9 +28,19 @@
             new Vue ({
                 el: 'h1',
                 data: {
-                    points: 101,
-                    skill: ''
+                    points: 101
+                },
+
+                computed: {
+                    skill: function () {
+                        if(this.points <= 100){
+                            return 'Beginner';
+                        } else {
+                            return 'Intermediate';
+                        }
+                    }
                 }
+
             });
         </script>
 
