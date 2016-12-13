@@ -43,16 +43,11 @@
                 el: '#app',
                 data: {
                     first: 'fzoozai',
-                    last: 'techio',
-                    fullname: 'fzoozai techio'
+                    last: 'techio'
                 },
-
-                watch: {
-                    first: function (first) {
-                        this.fullname = first + ' ' + this.last;
-                    },
-                    last: function (last) {
-                        this.fullname = this.first + ' ' + last;
+                computed: {
+                    fullname: function () {
+                        return this.first + ' ' + this.last;
                     }
                 }
             });
