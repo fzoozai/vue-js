@@ -13,41 +13,53 @@
     </head>
     <body>
 
-        <!--[if lt IE 8]>
-            <p  class="browserupgrade">You are using an <strong>outdated</strong> browser.
-                Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
-            </p>
-        <![endif]-->
-
         <!-- Add your site or application content here -->
 
         <div id="app">
-
-            <h1>{{fullname}}</h1>
-
-            <input type="text" v-model="first" placeholder="firstname">
-            <input type="text" v-model="last" placeholder="lastname">
-
-
+            <pre>{{$data | json}}</pre>
+            <div v-for="plan in plans">
+                <plan :plan="plan" :active.sync="active"></plan>
+            </div>
         </div>
 
+        <template id="plan-template">
+            <div>
+                <span>{{plan.name}}</span>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.5/vue.js"></script>
+                <span>{{plan.price}}/month</span>
+
+                <button @click="setActivePlan">
+                    Upgrade
+                </button>
+            </div>
+        </template>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
         <!--VueJs-->
-        <script src="js/vue.js"></script>
-
+        <!--<script src="js/vue.js"></script>-->
         <script>
             new Vue ({
                 el: '#app',
                 data: {
-                    first: 'fzoozai',
-                    last: 'techio'
+                    plans: [
+                        { name: 'Enterprise', price: 100 },
+                        { name: 'Pro', price: 50 },
+                        { name: 'Personal', price: 10 },
+                        { name: 'Free', price: 0 }
+                    ],
+                    active: {}
                 },
-                computed: {
-                    fullname: function () {
-                        return this.first + ' ' + this.last;
+                components: {
+                    plan: {
+                        template: '#plan-template',
+                        props: ['plan', 'active'],
+                        methods: {
+                            setActivePlan: function () {
+                                this.active = this.plan;
+                            }
+                        }
                     }
                 }
             });
