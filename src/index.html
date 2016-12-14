@@ -23,15 +23,19 @@
         <!-- Add your site or application content here -->
 
         <div id="app">
-            <ul>
-               <li :class="{completed : task.completed }"
-                   v-for="task in tasks"
-                   @click="toggleCompleted(task)"
-               >
-                   {{ task.body }}
-               </li>
-            </ul>
+            <tasks-app :list="tasks"></tasks-app>
         </div>
+
+        <template id="tasks-template">
+            <ul>
+                <li :class="{completed : task.completed }"
+                    v-for="task in list"
+                    @click="toggleCompleted(task)"
+                >
+                    {{ task.body }}
+                </li>
+            </ul>
+        </template>
 
         <!--VueJs-->
         <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.8/vue.js"></script>
