@@ -24,7 +24,12 @@
 
         <div id="app">
             <ul>
-               <li :class="{completed : task.completed }" v-for="task in tasks"> {{ task.body }} </li>
+               <li :class="{completed : task.completed }"
+                   v-for="task in tasks"
+                   @click="toggleCompleted(task)"
+               >
+                   {{ task.body }}
+               </li>
             </ul>
         </div>
 

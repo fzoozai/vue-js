@@ -8,5 +8,12 @@ new Vue({
             { body:'Go to the bank', completed: false },
             { body:'Go to the cinema', completed: true }
         ]
+    },
+
+    methods: {
+        toggleCompleted: function (task) {
+            task.completed = !task.completed;
+        }
     }
+
 });
