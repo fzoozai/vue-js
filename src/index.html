@@ -30,7 +30,7 @@
             <ul>
                 <li :class="{completed : task.completed }"
                     v-for="task in list"
-                    @click="toggleCompleted(task)"
+                    @click="task.completed = ! task.completed"
                 >
                     {{ task.body }}
                 </li>
