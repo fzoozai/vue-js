@@ -28,16 +28,22 @@
 
                 <span>{{plan.price}}/month</span>
 
-                <button @click="setActivePlan">
+                <button @click="setActivePlan"
+                        v-show="plan.name !== active.name"
+                >
                     {{ isUpgrade ? 'Upgrade' : 'Downgrade' }}
                 </button>
+
+                <span v-else>
+                    selected
+                </span>
             </div>
         </template>
 
+        <!--VueJs-->
         <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-        <!--VueJs-->
         <!--<script src="js/vue.js"></script>-->
         <script>
             new Vue ({
