@@ -2,7 +2,16 @@ Vue.component('tasks-app', {
 
     props: ['list'],
 
-    template: '#tasks-template'
+    template: '#tasks-template',
+
+    computed: {
+        remaining: function () {
+            return this.list.filter(function (task) {
+                return !task.completed;
+            }).length;
+        }
+    }
+
 });
 
 new Vue({
