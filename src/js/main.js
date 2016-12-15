@@ -6,9 +6,17 @@ Vue.component('tasks-app', {
 
     computed: {
         remaining: function () {
-            return this.list.filter(function (task) {
-                return !task.completed;
-            }).length;
+            return this.list.filter(this.inProgress).length;
+        }
+    },
+
+    methods: {
+        isCompleted: function (task) {
+            return task.completed;
+        },
+
+        inProgress: function (task) {
+            return !this.isCompleted(task);
         }
     }
 
